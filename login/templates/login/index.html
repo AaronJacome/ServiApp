@@ -29,11 +29,15 @@
                 type: "post", // or "get"
                 data: data,
                 success: function (data) {
-
                     console.log(data.result);
                 }
             });
         }
+
+        function register() {
+            window.location.href = "/login/register"
+        }
+
     </script>
 </head>
 
@@ -57,7 +61,7 @@
                         <input type="password" id="password" class="form-control" placeholder="Password">
                     </div>
                     <button type="button" class="btn btn-black" onclick="login()">Login</button>
-                    <button type="submit" class="btn btn-secondary">Register</button>
+                    <button type="button" class="btn btn-secondary" onclick="register()">Register</button>
                 </form>
             </div>
         </div>

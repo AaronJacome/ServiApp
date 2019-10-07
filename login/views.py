@@ -16,3 +16,6 @@ def login(request):
         data = {}
         data['result'] = 'you made a request'
         return HttpResponse(json.dumps(data), content_type="application/json")
+
+def register(request):
+    return render(request, 'login/register.html')
