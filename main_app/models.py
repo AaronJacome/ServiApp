@@ -26,7 +26,10 @@ class tb_CalendarioServicio(models.Model):
     
   idUsuario = models.IntegerField(default=0)
   idServicio = models.IntegerField(default=0)
+  latitud = models.DecimalField(max_digits=10, decimal_places=10, blank=True, null=True)
+  longitud = models.DecimalField(max_digits=10, decimal_places=10, blank=True, null=True)
+  domicilio = models.CharField(max_length=100, default="")
   status =  models.BooleanField(default=1)
 
   def __str__(self):
-    return self.idUsuario
+    return self.domicilio
