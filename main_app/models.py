@@ -11,6 +11,8 @@ class Tb_Usuario(models.Model):
   apellidoPaterno = models.CharField(max_length=100)
   status = models.BooleanField(default=1)
 
+  objects = models.Manager()
+
   def __str__(self):
     return self.nombre 
 
@@ -18,6 +20,8 @@ class Tb_CatalogoServicio(models.Model):
     
   nombreServicio = models.IntegerField(default=0)
   status =  models.BooleanField(default=1)
+
+  objects = models.Manager()
 
   def __str__(self):
     return self.nombreServicio
@@ -27,6 +31,8 @@ class tb_CalendarioServicio(models.Model):
   idUsuario = models.IntegerField(default=0)
   idServicio = models.IntegerField(default=0)
   status =  models.BooleanField(default=1)
+
+  objects = models.Manager()
 
   def __str__(self):
     return self.idUsuario
