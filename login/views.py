@@ -34,7 +34,6 @@ def loginRequest(request):
 def register(request):
     return render(request, 'login/register.html')
 
-
 def registerRequest(request):
     if request.method == "POST":  # os request.GET()
         # You can access the property like dict
