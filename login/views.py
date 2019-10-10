@@ -5,8 +5,8 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-   # return render(request, 'login/index.html')
-     return render(request, 'RegistroServicio/demo.html')
+    return render(request, 'login/index.html')
+     # return render(request, 'RegistroServicio/demo.html')
 
 def login(request):
     if request.method == "POST": #os request.GET()
