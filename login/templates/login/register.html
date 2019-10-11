@@ -16,8 +16,8 @@
 
     <script>
 
-        function isEmpty(value){
-            return value === undefined || value === ''? true : false;
+        function isEmpty(value) {
+            return value === undefined || value === '' ? true : false;
         }
 
         function register() {
@@ -31,22 +31,22 @@
             var pass = document.getElementById("pass").value
             var confirmarPass = document.getElementById("confirmarPass").value
 
-            if(pass !== confirmarPass) {
+            if (pass !== confirmarPass) {
                 swal("Error", "Las contraseñas no coinciden", "error");
             }
 
-            if(isEmpty(nombre) || isEmpty(apellidoPaterno) ||isEmpty(edad) ||isEmpty(telefono) ||isEmpty(pass) ){
+            if (isEmpty(nombre) || isEmpty(apellidoPaterno) || isEmpty(edad) || isEmpty(telefono) || isEmpty(pass)) {
                 swal("Error", "Escribir información en los datos que son requeridos", "error");
             }
 
             var data = {
-                nombre:nombre,
-                apellidoPaterno:apellidoPaterno,
-                apellidoMaterno:apellidoMaterno,
-                edad:edad,
-                telefono:telefono,
-                pass:pass,
-                confirmarPass:confirmarPass
+                nombre: nombre,
+                apellidoPaterno: apellidoPaterno,
+                apellidoMaterno: apellidoMaterno,
+                edad: edad,
+                telefono: telefono,
+                pass: pass,
+                confirmarPass: confirmarPass
             }
 
 
@@ -56,10 +56,10 @@
                 type: "post", // or "get"
                 data: data,
                 success: function (data) {
-                    if(data.code == "200")
-                        window.location.href = '/home'
+                    if (data.code == "200")
+                        window.location.href = "/home/"
                     else
-                    swal("Error", data.message, "error");
+                        swal("Error", data.message, "error");
                 }
             });
         }
@@ -78,27 +78,28 @@
                 <input type="submit" name="" value="Login" /><br /> -->
             </div>
             <div class="col-md-9 register-right">
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <h3 class="register-heading">Crear cuenta</h3>
-                            <div class="row register-form">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="nombre" placeholder="Nombre(s) *" value="" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="apellidoPaterno" placeholder="Apellido Paterno  *" required
-                                            value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" id="apellidoMaterno" placeholder="Apellido Materno"
-                                            value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="number" min="18" class="form-control" id="edad" placeholder="Edad *" required
-                                            value="" />
-                                    </div>
-                                    <!-- <div class="form-group">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Crear cuenta</h3>
+                        <div class="row register-form">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="nombre" placeholder="Nombre(s) *"
+                                        value="" required />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="apellidoPaterno"
+                                        placeholder="Apellido Paterno  *" required value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="apellidoMaterno"
+                                        placeholder="Apellido Materno" value="" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="number" min="18" class="form-control" id="edad" placeholder="Edad *"
+                                        required value="" />
+                                </div>
+                                <!-- <div class="form-group">
                                     <div class="maxl">
                                         <label class="radio inline">
                                             <input type="radio" name="gender" value="male" checked>
@@ -110,24 +111,25 @@
                                         </label>
                                     </div>
                                 </div> -->
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="pass" placeholder="Password *"
+                                        value="" required />
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="pass" placeholder="Password *" value="" required/>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" id="confirmarPass" placeholder="Confirm Password *" required
-                                            value="" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" minlength="10" maxlength="10" id="telefono" required
-                                            class="form-control" placeholder="Telefono *" value="" />
-                                    </div>
-                                    <input type="button" onclick="register()" class="btnRegister" value="Registro" />
+                                <div class="form-group">
+                                    <input type="password" class="form-control" id="confirmarPass"
+                                        placeholder="Confirm Password *" required value="" />
                                 </div>
+                                <div class="form-group">
+                                    <input type="text" minlength="10" maxlength="10" id="telefono" required
+                                        class="form-control" placeholder="Telefono *" value="" />
+                                </div>
+                                <input type="button" onclick="register()" class="btnRegister" value="Registro" />
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
 
