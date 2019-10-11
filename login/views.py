@@ -9,6 +9,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 
 def index(request):
     return render(request, 'login/index.html')
+     # return render(request, 'RegistroServicio/demo.html')
 
 
 def loginRequest(request):
@@ -53,3 +54,4 @@ def registerRequest(request):
             response['code'] = '200'     
 
         return HttpResponse(json.dumps(response), content_type="application/json")
+
