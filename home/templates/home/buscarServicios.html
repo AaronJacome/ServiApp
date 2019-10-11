@@ -14,6 +14,9 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Buscar Servicios</title>
     <script>
+        markers = [];
+        map = null
+        catalogo = []
         // Initialize and add the map
         // function initMap() {
         //     // The location of Uluru
@@ -31,39 +34,53 @@
                 zoom: 14,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-            var map = new google.maps.Map(document.getElementById("map-canvas"),
+            map = new google.maps.Map(document.getElementById("map-canvas"),
                 myOptions);
-            
+
             ObtenerServicios();
         }
 
-        function ObtenerServicios(){
-            var url = "/home/get_services_request/"
-            $.ajax({
-                url: url,
-                type: "GET", // or "get"
-                success: function (data) {                     
-                debugger
-                    if(data.code === "200"){
-                        console.log(data)
-                    }else{
-                        swal("Error", data.message, "error");
+        function ObtenerServicios() {
+            setTimeout(() => {
+                var url = "/home/get_services_request/"
+                $.ajax({
+                    url: url,
+                    type: "GET", // or "get"
+                    success: function (data) {
+                        debugger
+                        if (data.code === "200") {
+                            servicesArray = JSON.parse(data.data)
+                            console.log(servicesArray)
+                            // Create a marker for each place.
+                            for (var i = 0; i < servicesArray.length; i++) {
+                                var fields = servicesArray[i].fields
+                                var nombreLugar = catalogo.find(x=> x.pk == fields.idServicio)
+                                markers.push(new google.maps.Marker({
+                                    map: map,
+                                    title: nombreLugar.fields.nombreServicio +" "+fields.domicilio,
+                                    position: { lat: parseFloat(fields.latitud), lng: parseFloat(fields.longitud) }
+                                }));
+                            }
+                        } else {
+                            swal("Error", data.message, "error");
+                        }
                     }
-                }
-            });
+                });
+            }, 1000)
+
             $.ajax({
                 url: '/home/get_typeservices_request/',
                 type: "GET", // or "get"
-                success: function (data) {                     
-                debugger
-                    if(data.code === "200"){
-                        console.log(data)
-                    }else{
+                success: function (data) {
+                    debugger
+                    if (data.code === "200") {
+                        catalogo = JSON.parse(data.data)
+                    } else {
                         swal("Error", data.message, "error");
                     }
                 }
             });
-            
+
         }
     </script>
     <style>
@@ -91,11 +108,8 @@
         <div class="col-md-6 p-0 bg-indigo h-md-100">
             <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
                 <div class="logoarea pt-5 pb-5" style="color:white">
-                    <p>¿Tienes tiempo libres?</p>
-                    <p>¿Sabes hacer otras cosas aparte de lo que ejerces? <smal>(carpintero, electricista, fontanero,
-                            etc)</smal>
-                    </p>
-                    <button type="button" class="btn btn-outline-light">Dar de alta servicios</button>
+                    <input type="text" name="" id="" placeholder="Nombre del servicio">
+                    <button type="button" class="btn btn-outline-light">Buscar</button>
                 </div>
             </div>
         </div>
