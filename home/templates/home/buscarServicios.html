@@ -33,6 +33,37 @@
             };
             var map = new google.maps.Map(document.getElementById("map-canvas"),
                 myOptions);
+            
+            ObtenerServicios();
+        }
+
+        function ObtenerServicios(){
+            var url = "/home/get_services_request/"
+            $.ajax({
+                url: url,
+                type: "GET", // or "get"
+                success: function (data) {                     
+                debugger
+                    if(data.code === "200"){
+                        console.log(data)
+                    }else{
+                        swal("Error", data.message, "error");
+                    }
+                }
+            });
+            $.ajax({
+                url: '/home/get_typeservices_request/',
+                type: "GET", // or "get"
+                success: function (data) {                     
+                debugger
+                    if(data.code === "200"){
+                        console.log(data)
+                    }else{
+                        swal("Error", data.message, "error");
+                    }
+                }
+            });
+            
         }
     </script>
     <style>
