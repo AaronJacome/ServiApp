@@ -33,7 +33,7 @@
                     if(data.code === "200"){
                         userArray = JSON.parse(data.data)
                         sessionStorage.setItem("usuario", JSON.stringify(userArray[0]))
-                        window.location.href = "/home"
+                        window.location.href = "/home/"
                     }else{
                         swal("Error", data.message, "error");
                     }
