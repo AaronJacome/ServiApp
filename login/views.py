@@ -54,3 +54,4 @@ def registerRequest(request):
             response['code'] = '200'     
 
         return HttpResponse(json.dumps(response), content_type="application/json")
+

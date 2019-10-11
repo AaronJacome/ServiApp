@@ -19,7 +19,14 @@
             sessionStorage.removeItem("usuario")
             window.location.href = "/"
         }
+
+        function busqueda() {       
+            window.location.href = "/home/RegistroServicio/"
+        }
     </script>
+
+
+    
 </head>
 
 <body>
@@ -40,7 +47,7 @@
                     <p>¿Sabes hacer otras cosas aparte de lo que ejerces? <smal>(carpintero, electricista, fontanero,
                             etc)</smal>
                     </p>
-                    <button type="button" class="btn btn-outline-light">Dar de alta servicios</button>
+                    <button type="button"  onclick="busqueda()" class="btn btn-outline-light">Dar de alta servicios</button>
                 </div>
             </div>
         </div>
